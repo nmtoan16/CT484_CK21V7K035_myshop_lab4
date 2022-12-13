@@ -117,7 +117,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Product'),
+        title: const Text('Thêm sản phẩm'),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.save),
@@ -149,7 +149,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildTitleField() {
     return TextFormField(
       initialValue: _editedProduct.title,
-      decoration: const InputDecoration(labelText: 'Title'),
+      decoration: const InputDecoration(labelText: 'Tiêu đề'),
       textInputAction: TextInputAction.next,
       autofocus: true,
       validator: (value) {
@@ -191,7 +191,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
   TextFormField buildDescriptionField() {
     return TextFormField(
       initialValue: _editedProduct.description,
-      decoration: const InputDecoration(labelText: 'Description'),
+      decoration: const InputDecoration(labelText: 'Mô tả'),
       maxLines: 3,
       keyboardType: TextInputType.multiline,
       validator: (value) {
@@ -223,7 +223,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
           decoration:
               BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
           child: _imageUrlController.text.isEmpty
-              ? const Text('Enter a URL')
+              ? const Text('URL')
               : FittedBox(
                   child: Image.network(
                     _imageUrlController.text,

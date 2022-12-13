@@ -16,7 +16,7 @@ class CartScreen extends StatelessWidget {
     final cart = context.watch<CartManager>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Cart1'),
+        title: const Text('Giỏ hàng'),
       ),
       body: Column(
         children: <Widget>[
@@ -52,7 +52,7 @@ class CartScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             const Text(
-              'Total',
+              'Tổng tiền',
               style: TextStyle(fontSize: 20),
             ),
             const Spacer(),
@@ -81,7 +81,7 @@ class CartScreen extends StatelessWidget {
               style: TextButton.styleFrom(
                 textStyle: TextStyle(color: Theme.of(context).primaryColor),
               ),
-              child: const Text('ORDER NOW'),
+              child: const Text('Đặt hàng ngay'),
             )
           ],
         ),

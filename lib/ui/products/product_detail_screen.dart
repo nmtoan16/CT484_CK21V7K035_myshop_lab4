@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/ui/screens.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/product.dart';
 
@@ -25,7 +27,45 @@ class ProductDetailScreen extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             '\$${product.price}',
-            style: const TextStyle(color: Colors.grey, fontSize: 20),
+            style: const TextStyle(
+                color: Color.fromARGB(190, 72, 130, 255), fontSize: 20),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+            child: SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8))),
+                    textStyle: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold)),
+                onPressed: () {
+                  final cart = context.read<CartManager>();
+                  cart.addItem(product);
+                  ScaffoldMessenger.of(context)
+                    ..hideCurrentSnackBar()
+                    ..showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                          'Thêm vào giỏ hàng',
+                        ),
+                        duration: const Duration(seconds: 2),
+                        action: SnackBarAction(
+                          label: 'Hủy',
+                          onPressed: () {
+                            cart.removeSingleItem(product.id!);
+                          },
+                        ),
+                      ),
+                    );
+                },
+                child: const Text("Thêm vào giỏ hàng",
+                    style: TextStyle(color: Colors.white, fontSize: 16)),
+              ),
+            ),
           ),
           const SizedBox(height: 10),
           Container(
@@ -42,4 +82,6 @@ class ProductDetailScreen extends StatelessWidget {
     );
   }
 }
+
+onAddToCartLicked() {}
 //CK21V7K035

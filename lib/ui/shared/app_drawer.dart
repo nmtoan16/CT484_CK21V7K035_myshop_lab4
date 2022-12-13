@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:myshop/ui/shared/app_login.dart';
 import '../orders/orders_screen.dart';
 import '../products/user_products_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
+  static bool isLogin = false;
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Column(
         children: <Widget>[
           AppBar(
-            title: const Text('Hello Friend!'),
+            title: const Text('Cửa hàng giày Cần Thơ'),
             automaticallyImplyLeading: false,
           ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.shop),
-            title: const Text('Shop'),
+            title: const Text('Cửa hàng'),
             onTap: () {
               Navigator.of(context).pushReplacementNamed('/');
             },
@@ -24,7 +26,7 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.payment),
-            title: const Text('Orders'),
+            title: const Text('Đặt hàng'),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(OrdersScreen.routeName);
@@ -33,10 +35,11 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.edit),
-            title: const Text('Manage Products'),
+            title: const Text('Quản lý sản phẩm'),
             onTap: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(UserProductsScreen.routeName);
+              Navigator.of(context).pushReplacementNamed(isLogin == true
+                  ? UserProductsScreen.routeName
+                  : AppLogin.routeName);
             },
           ),
         ],

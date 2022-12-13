@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_manager.dart';
 import 'package:myshop/ui/orders/orders_manager.dart';
 import 'package:myshop/ui/products/edit_product_screen.dart';
+import 'package:myshop/ui/shared/app_login.dart';
 import 'ui/products/products_manager.dart';
 import 'ui/products/product_detail_screen.dart';
 import 'ui/products/products_overview_screen.dart';
@@ -38,9 +39,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Lato',
           colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.purple,
+            primarySwatch: Colors.blue,
           ).copyWith(
-            secondary: Colors.deepOrange,
+            secondary: Color.fromARGB(255, 0, 46, 197),
           ),
         ),
         // home: Container(
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
           CartScreen.routeName: (ctx) => const CartScreen(),
           OrdersScreen.routeName: (ctx) => const OrdersScreen(),
           UserProductsScreen.routeName: (ctx) => const UserProductsScreen(),
+          AppLogin.routeName: (ctx) => const AppLogin()
         },
         onGenerateRoute: (settings) {
           // if (settings.name == ProductDetailScreen.routeName) {
@@ -79,17 +81,17 @@ class MyApp extends StatelessWidget {
           //     },
           //   );
           // }
-          // if (settings.name == ProductDetailScreen.routeName) {
-          //   final productId = settings.arguments as String;
-          //   return MaterialPageRoute(
-          //     builder: (ctx) {
-          //       return ProductDetailScreen(
-          //         ctx.read<ProductsManager>().findById(productId)!,
-          //         //ProductsManager().findById(productId)!,
-          //       );
-          //     },
-          //   );
-          // }
+          if (settings.name == ProductDetailScreen.routeName) {
+            final productId = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return ProductDetailScreen(
+                  ctx.read<ProductsManager>().findById(productId)!,
+                  //ProductsManager().findById(productId)!,
+                );
+              },
+            );
+          }
           if (settings.name == EditProductScreen.routeName) {
             final productId = settings.arguments as String?;
             return MaterialPageRoute(

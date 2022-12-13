@@ -15,7 +15,7 @@ class UserProductsScreen extends StatelessWidget {
     final productsManager = ProductsManager();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Products'),
+        title: const Text('Quản lý sản phẩm'),
         actions: <Widget>[
           // buildAddButton(),
           buildAddButton(context),

@@ -17,7 +17,10 @@ class ProductGridTile extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
-        footer: buildGridFooterBar(context),
+        footer: Container(
+          child: buildGridFooterBar(context),
+          height: 40,
+        ),
         child: GestureDetector(
           // onTap: () {
           //   Navigator.of(context).push(
@@ -53,7 +56,7 @@ class ProductGridTile extends StatelessWidget {
       //     print('Toggle a favorite product');
       //   },
       // ),
-      backgroundColor: Colors.black87,
+      backgroundColor: Color.fromARGB(109, 79, 164, 255),
       leading: ValueListenableBuilder<bool>(
         valueListenable: product.isFavoriteListenable,
         builder: (ctx, isFavorite, child) {
@@ -87,11 +90,11 @@ class ProductGridTile extends StatelessWidget {
             ..showSnackBar(
               SnackBar(
                 content: const Text(
-                  'Item added to cart',
+                  'Thêm vào giỏ hàng',
                 ),
                 duration: const Duration(seconds: 2),
                 action: SnackBarAction(
-                  label: 'UNDO',
+                  label: 'Hủy',
                   onPressed: () {
                     cart.removeSingleItem(product.id!);
                   },
